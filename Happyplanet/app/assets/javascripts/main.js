@@ -2,7 +2,8 @@
 var app = app || {};
 
 app.step = 0;
-app.numParticles = 500;
+app.numParticles = 10;
+app.visibleParticles = 4;
 app.particleDistribution = 300;
 // app.numCubes = 2000;
 // app.cubeDistribution = 100;
@@ -213,6 +214,18 @@ app.randRange = function(min, max){
   return min + (Math.random() * range);
 };
 
+app.createParticle = function(){
+
+  console.log('createParticle', app.visibleParticles, app.particleSystem.geometry.vertices[ app.visibleParticles ])
+  var particle = app.particleSystem.geometry.vertices[ app.visibleParticles ];
+  particle.hidden = false;
+  console.log(app.camera.position);
+  particle.set( app.camera.position.x, app.camera.position.y, app.camera.position.z );
+  console.log( particle );
+  app.visibleParticles++;
+
+};
+
 app.createParticleSystem = function() {
 
     var particles = new THREE.Geometry(); // a basic collection of vertices (i.e. points)
@@ -220,20 +233,48 @@ app.createParticleSystem = function() {
   particles.userData = []; // to keep track of particles
 
   var pcolours = [];
+  var x, y, z;
+  var particle;
 
   for( var p = 0; p < app.numParticles; p++ ){
 
+
       // var x = app.randRange(-300, 300);
-      var x = app.randRange( -app.particleDistribution, app.particleDistribution );
-      var y = app.randRange( -app.particleDistribution, app.particleDistribution );
-      var z = app.randRange( -app.particleDistribution, app.particleDistribution );
 
+      if( p < app.visibleParticles ){
 
-      var particle = new THREE.Vector3( x, y, z ); // create this specific vertex (vertex = single of vertices)
+        // visible particles
 
-      particle.vx = app.randRange( -0.2, 0.2 );
-      particle.vy = app.randRange( -0.2, 0.2 );
-      particle.vz = app.randRange( -0.2, 0.2 );
+        x = app.randRange( -app.particleDistribution, app.particleDistribution );
+        y = app.randRange( -app.particleDistribution, app.particleDistribution );
+        z = app.randRange( -app.particleDistribution, app.particleDistribution );
+
+        particle = new THREE.Vector3( x, y, z ); // create this specific vertex (vertex = single of vertices)
+
+        particle.vx = app.randRange( -0.2, 0.2 );
+        particle.vy = app.randRange( -0.2, 0.2 );
+        particle.vz = app.randRange( -0.2, 0.2 );
+
+        particle.hidden = false;
+
+      } else {
+
+        // hidden particles
+
+        x = 10000;
+        y = 10000;
+        z = 10000;
+
+        particle = new THREE.Vector3( x, y, z ); // create this specific vertex (vertex = single of vertices)
+
+        particle.vx = 0;
+        particle.vy = 0;
+        particle.vz = 0;
+
+        particle.hidden = true;
+
+      }
+
 
       particles.userData.push( particle );
 
@@ -242,6 +283,7 @@ app.createParticleSystem = function() {
       particles.vertices.push( particle ); // add to our collection of vertices
 
       pcolours[p] = new THREE.Color(1.0, 1.0, 1.0); // initialise a colour for each particle
+
 
      }
 
@@ -252,7 +294,7 @@ app.createParticleSystem = function() {
           blending: THREE.AdditiveBlending, // just obey
           transparent: true,
           alphaTest: 0.5, // also obey
-          map: THREE.ImageUtils.loadTexture("/img/sun1.png")
+          map: THREE.ImageUtils.loadTexture("/assets/p.png")
   });
 
 
@@ -368,7 +410,7 @@ $(document).mousedown(function (e) {
               app.particleSystem.geometry.vertices[ particle.index].textcontent
            );
 
-           debugger;
+          //  debugger;
 
             app.particleSystem.geometry.colors[ particle.index ].setRGB(Math.random(), Math.random(), Math.random());
 
@@ -394,8 +436,33 @@ $(document).mousedown(function (e) {
             .html( app.particleSystem.geometry.vertices[ particle.index].textcontent )
             .appendTo( $('body') );
 
-            setTimeout(function(){ $el.remove(); }, 1000);
-
+            setTimeout(function(){ $el.remove(); }, 500);
 
    }
+
  });
+
+// from http://stackoverflow.com/questions/11534000/three-js-converting-3d-position-to-2d-screen-position
+ function toScreenXY( position, camera, div ) {
+  var pos = position.clone();
+  projScreenMat = new THREE.Matrix4();
+  projScreenMat.multiplyMatrices( camera.projectionMatrix, camera.matrixWorldInverse );
+  pos.applyProjection( projScreenMat );
+
+  var offset = findOffset(div);
+
+  return { x: ( pos.x + 1 ) * div.width / 2 + offset.left,
+       y: ( - pos.y + 1) * div.height / 2 + offset.top };
+
+}
+function findOffset(element) {
+  var pos = new Object();
+  pos.left = pos.top = 0;
+  if (element.offsetParent) {
+    do {
+      pos.left += element.offsetLeft;
+      pos.top += element.offsetTop;
+    } while (element = element.offsetParent);
+  }
+  return pos;
+}
