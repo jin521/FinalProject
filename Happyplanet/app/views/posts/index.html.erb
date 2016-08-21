@@ -1,0 +1,21 @@
+<h1> this is the index.html.erb file yeah </h1>
+
+
+
+<table style="width:50%">
+<tr>
+  <th>Time</th>
+  <th>message</th>
+</tr>
+  <%= @posts.each do  |post|%>
+  <tr>
+    <td><%=link_to post.created_at, post_path(post.id)%></td>
+    <td><%= post.description%></td>
+ </tr>
+  <% end  %>
+</table>
+
+
+<% @tweets.each do |tweet| %>
+<div><%= tweet.post %></div>
+<% end  %>

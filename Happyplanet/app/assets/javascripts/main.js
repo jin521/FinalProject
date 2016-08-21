@@ -2,8 +2,8 @@
 var app = app || {};
 
 app.step = 0;
-app.numParticles = 10;
-app.visibleParticles = 4;
+app.numParticles = 1000;
+app.visibleParticles = 23;
 app.particleDistribution = 300;
 // app.numCubes = 2000;
 // app.cubeDistribution = 100;
@@ -40,6 +40,7 @@ app.init = function() {
   // near
   // far
 
+
   app.camera.position.x = -30;
   app.camera.position.y = 40;
   app.camera.position.z = 30;
@@ -54,8 +55,8 @@ app.init = function() {
 
 
 
-  // app.axes = new THREE.AxisHelper( 40 );
-  // app.scene.add( app.axes );
+  app.axes = new THREE.AxisHelper( 40 );
+  app.scene.add( app.axes );
 
   // var planeGeometry = new THREE.PlaneGeometry( 120, 20 ); // 120 x 20 plane
   // var planeMaterial = new THREE.MeshLambertMaterial({
@@ -135,6 +136,10 @@ app.init = function() {
   app.animate();
 
 };
+
+
+
+ // app.particle = app.createParticle();
 
 
 
@@ -278,8 +283,8 @@ app.createParticleSystem = function() {
 
       particles.userData.push( particle );
 
-      particle.textcontent = 'hello! ' + (Math.random()).toString();
-
+      // particle.textcontent = 'hello! ' + (Math.random()).toString();
+      particle.textcontent = @tweet.text;
       particles.vertices.push( particle ); // add to our collection of vertices
 
       pcolours[p] = new THREE.Color(1.0, 1.0, 1.0); // initialise a colour for each particle
@@ -294,7 +299,7 @@ app.createParticleSystem = function() {
           blending: THREE.AdditiveBlending, // just obey
           transparent: true,
           alphaTest: 0.5, // also obey
-          map: THREE.ImageUtils.loadTexture("/assets/p.png")
+          map: THREE.ImageUtils.loadTexture("/assets/particle.png")
   });
 
 
@@ -442,7 +447,7 @@ $(document).mousedown(function (e) {
 
  });
 
-// from http://stackoverflow.com/questions/11534000/three-js-converting-3d-position-to-2d-screen-position
+//  converting 3d position to 2d screen position, from http://stackoverflow.com/questions/11534000/three-js-converting-3d-position-to-2d-screen-position
  function toScreenXY( position, camera, div ) {
   var pos = position.clone();
   projScreenMat = new THREE.Matrix4();

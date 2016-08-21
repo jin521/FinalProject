@@ -1,0 +1,9 @@
+
+<h1>this is the show page </h1>
+<p class = "date">
+submitted <%= @post.created_at.strftime '%A %B %e, %Y' %>ago
+</p>
+
+<p class = "body">
+  <%= @post.description %>
+</p>

@@ -1,0 +1,29 @@
+
+
+
+    <%= form_for @user do |f| %>
+
+      <div class ="form-group">
+          <%= f.label :name, :class => "control-label"%>
+          <%= f.text_field :name, :required => true, :class => 'form-control' %>
+      </div>
+
+
+      <div class ="form-group">
+          <%= f.label :email, :class => "control-label"%>
+          <%= f.text_field :email, :autofocus => true, :required => true, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+          <%= f.label :password, :class => "control-label" %>
+          <%= f.password_field :password, :class =>'form-control' %>
+      </div>
+
+      <div class="form-group">
+          <%= f.label :password_confirmation, :class => "control-label" %>
+          <%= f.password_field :password_confirmation, :class => 'form-control' %>
+      </div>
+
+      <%= f.submit "edit user", :class =>"btn btn-danger" %>
+    <% end %>
+  </div>
