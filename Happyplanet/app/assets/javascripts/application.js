@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require three.js
+//= require three
 
-//= require orbitControls.js
-//= require datGui.js
-// =require stats.js
+//= require orbitControls
+//= require datGui
+// =require stats
+
+// =require main
 
 //= require_tree .

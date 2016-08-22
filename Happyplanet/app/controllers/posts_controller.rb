@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @tweets = Tweet.all
+
   end
 
 
@@ -20,6 +20,13 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+
+  def get_posts
+    all_posts = Post.all
+    render json: {posts: all_posts}, :status => :ok
+  end
+
+
 
 
 

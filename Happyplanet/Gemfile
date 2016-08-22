@@ -37,6 +37,8 @@ group :development, :test do
   gem 'byebug'
   gem 'bcrypt'
   gem 'twitter'
+  gem 'bootstrap-sass'
+  gem 'pry-rails'
 end
 
 group :development do

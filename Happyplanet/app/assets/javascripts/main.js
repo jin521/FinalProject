@@ -2,12 +2,16 @@
 var app = app || {};
 
 app.step = 0;
-app.numParticles = 1000;
-app.visibleParticles = 23;
+
+app.visibleParticles = 0;   // will be set to length of posts (in AJAX handler)
+app.hiddenParticles = 100;
+app.totalParticles = 0;
+
 app.particleDistribution = 300;
 // app.numCubes = 2000;
 // app.cubeDistribution = 100;
 
+app.all_posts = [];
 
 
  var raycaster = new THREE.Raycaster();  //Raycasting is a rendering technique to create a 3D perspective in a 2D map.
@@ -113,8 +117,38 @@ app.init = function() {
   app.light.color.setRGB( 0.4, 0.4, 0.4 );
   app.scene.add( app.light );
 
-  app.particleSystem = app.createParticleSystem();
-  app.scene.add ( app.particleSystem );
+  console.log('create particles');
+
+  $.ajax('/getposts').done(function (response) {
+
+    // we have to wait for our ajax response before we can do the rest of the three.js code below:
+
+    app.all_posts = response.posts;
+
+    app.visibleParticles = app.all_posts.length;
+    app.totalParticles = app.visibleParticles + app.hiddenParticles;
+
+    console.log('all_posts',app.all_posts);
+
+    app.particleSystem = app.createParticleSystem();
+    app.scene.add ( app.particleSystem );
+
+    app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement );
+
+    app.gui = new dat.GUI();  //graphical user interface
+    app.gui.add( app.controller, 'rotationSpeed', 0, 0.2 );
+    app.gui.add( app.controller, 'bouncingSpeed', 0, 2.0 );
+
+    app.stats = app.addStats();  //stats-statistics
+
+    document.getElementById("output").appendChild(app.renderer.domElement);
+    app.animate();
+
+  });
+
+  // =require getpost
+
+
 
   // app.cubeFleet = app.createCubeFleet( app.numCubes, app.cubeDistribution );
   //
@@ -123,17 +157,8 @@ app.init = function() {
   //   app.scene.add( cube );
   // });
 
-  app.controls = new THREE.OrbitControls( app.camera, app.renderer.domElement );
 
-  app.gui = new dat.GUI();  //graphical user interface
-  app.gui.add( app.controller, 'rotationSpeed', 0, 0.2 );
-  app.gui.add( app.controller, 'bouncingSpeed', 0, 2.0 );
 
-  app.stats = app.addStats();  //stats-statistics
-
-  document.getElementById("output").appendChild(app.renderer.domElement);
-
-  app.animate();
 
 };
 
@@ -241,7 +266,7 @@ app.createParticleSystem = function() {
   var x, y, z;
   var particle;
 
-  for( var p = 0; p < app.numParticles; p++ ){
+  for( var p = 0; p < app.totalParticles; p++ ){
 
 
       // var x = app.randRange(-300, 300);
@@ -261,6 +286,8 @@ app.createParticleSystem = function() {
         particle.vz = app.randRange( -0.2, 0.2 );
 
         particle.hidden = false;
+
+        particle.textcontent = app.all_posts[p].description;
 
       } else {
 
@@ -283,8 +310,7 @@ app.createParticleSystem = function() {
 
       particles.userData.push( particle );
 
-      // particle.textcontent = 'hello! ' + (Math.random()).toString();
-      particle.textcontent = @tweet.text;
+      // particle.textcontent = @tweet.text;
       particles.vertices.push( particle ); // add to our collection of vertices
 
       pcolours[p] = new THREE.Color(1.0, 1.0, 1.0); // initialise a colour for each particle
@@ -387,8 +413,9 @@ app.addStats = function() {
 window.addEventListener( "resize", app.onResize);
 
 
-
-window.onload = app.init; // instead of jQuery
+$(document).ready(function(){
+  app.init();
+});
 
 $(document).mousedown(function (e) {
   console.log('mousedown');
