@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
 
-
-  resources :posts
-  resources :pages
-  resources :users
   root "pages#home"
 
-  get'/pages/signup' =>'pages#signup'
+  resources :posts
+  get '/user/:id/posts/' => 'posts#index', :as =>'user_posts'
+  resources :pages
+  resources :users
 
 
-  get '/login' => 'session#new'         # This will be our sign-in page.
-  post '/login' => 'session#create'     # This will be the path to which the sign-in form is posted
-  delete '/login' => 'session#destroy'  # This will be the path users use to log-out.
+
+  get '/login' => 'sessions#new'         # This will be our sign-in page.
+  post '/login' => 'sessions#create'     # This will be the path to which the sign-in form is posted
+  delete '/logout' => 'sessions#destroy'  # This will be the path users use to log-out.
 
 
   get '/getposts' => 'posts#get_posts'     #routing for Ajax only

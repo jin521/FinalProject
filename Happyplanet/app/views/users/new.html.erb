@@ -1,12 +1,5 @@
 
 
-    <% if @user.errors.any? %>
-      <ol>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ol>
-    <% end %>
 
     <%= form_for @user do |f| %>
 
@@ -31,6 +24,6 @@
           <%= f.password_field :password_confirmation, :class => 'form-control' %>
       </div>
 
-      <%= f.submit "Sign up", :class =>"btn btn-danger" %>
+          <%= f.submit "Sign up" %>
     <% end %>
   </div>

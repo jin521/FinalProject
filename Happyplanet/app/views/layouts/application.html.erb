@@ -7,30 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-  <!-- <ul>
+<!--
+   <ul>
     <li><%= link_to "Sign Up", new_user_path %> </li>
     <li><%= link_to "Sign In", login_path %> </li>
-    <li><%= link_to "Log Out", login_path, :method => :delete  %></li>
-  </ul>
- -->
+    <li><%= link_to "Log Out", logout_path, :method => :delete  %></li>
+  </ul> -->
 
 
 
-
-  <nav class= "navbar navbar-inverse ">
+  <nav class= "navbar navbar-inverse">
     <ul class = "nav navbar-nav">
 
     <li><%= link_to 'HOME', root_path %></li>
     <% if @current_user.present? %>
-
-      <%# if @current_user.admin? %>
-        <%#= link_to "Users", users_path %>
-      <%# end %>
-
-      <!-- edit_use_path is static now, need to add a show page for this  -->
-      <!-- <%= link_to "Edit Profile", edit_user_path %> -->
 
       <li><%= link_to "Logout", login_path, :method => :delete %></li>
       <li><%= link_to "My account", user_path(@current_user)%></li>
@@ -40,6 +30,10 @@
     <% end %>
   </ul>
   </nav>
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 
-  before_action :authorise_user, :only => [:index]
+  before_action :authorise_user, :except => [:index]
   before_action :check_for_user, :only => [:edit, :update]
 
   def new
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       end
 
       def authorise_user
-        redirect_to root_path unless @current_user.present? && @current_user.admin?
+        redirect_to root_path unless @current_user.present?
       end
 
       def check_for_user

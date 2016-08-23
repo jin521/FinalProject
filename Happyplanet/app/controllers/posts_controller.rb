@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
 
+      @posts = Post.where(params[:user_id] = @current_user.id)
   end
 
 
@@ -22,17 +22,15 @@ class PostsController < ApplicationController
   end
 
   def get_posts
-    all_posts = Post.all
+    all_posts = Post.where.not(:description => "")
     render json: {posts: all_posts}, :status => :ok
   end
 
 
 
-
-
 private
 def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, )
 end
 
 
