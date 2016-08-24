@@ -1,4 +1,18 @@
 
+ <!-- <div id = "enterpost">
+
+   <%= form_for :post, url: posts_path do |f| %>
+   <%= f.text_area :description ,  :required => true, placeholder: "What makes you happy today?"%></br>
+   <%= f.submit "Enter", :id =>"enterbutton" %>
+   <% end  %>
+ </div> -->
+
+<div class = "box" >
+  <%= form_for :post, url: posts_path, :id =>"enterpost" do |f| %>
+  <%= f.text_area :description ,  :required => true, placeholder: "What makes you happy today?"%></br>
+  <%= f.submit "Enter", :id =>"enterbutton" %>
+  <% end  %>
+</div>
 
 
 <div id="stats"  ></div>

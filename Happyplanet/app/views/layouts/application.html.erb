@@ -22,7 +22,7 @@
     <li><%= link_to 'HOME', root_path %></li>
     <% if @current_user.present? %>
 
-      <li><%= link_to "Logout", login_path, :method => :delete %></li>
+      <li><%= link_to "Logout", logout_path, :method => :delete %></li>
       <li><%= link_to "My account", user_path(@current_user)%></li>
     <% else %>
       <li><%= link_to 'SIGN UP', new_user_path %></li>

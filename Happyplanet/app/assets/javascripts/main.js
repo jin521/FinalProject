@@ -100,11 +100,18 @@ var createUniverse = function() {
         // app.scene.add( app.cube );
 
         // create the geometry sphere for sphere
+
+
+            app.light = new THREE.AmbientLight();
+            app.light.color.setRGB( 0.7, 0.7, 0.7 );
+            app.scene.add( app.light );
+
+
         var sphereGeometry = new THREE.SphereGeometry(16, 30, 30);
         var sphereMaterial = new THREE.MeshLambertMaterial({
             color: 0xFFFFFF,
             wireframe: false,
-            // map: THREE.ImageUtils.loadTexture("/assets/earth.jpg")
+            map: THREE.ImageUtils.loadTexture("/assets/earth.jpg")
         });
 
 
@@ -115,6 +122,7 @@ var createUniverse = function() {
 
         app.scene.add(app.sphere);
 
+console.log(app.sphere, sphereMaterial);
 
 
         // create the geometry sphere for background
@@ -141,7 +149,7 @@ var createUniverse = function() {
             app.visibleParticles = app.all_posts.length;
             app.totalParticles = app.visibleParticles + app.hiddenParticles;
 
-            console.log('all_posts', app.all_posts);
+            // console.log('all_posts', app.all_posts);
 
             app.particleSystem = app.createParticleSystem();
             app.scene.add(app.particleSystem);

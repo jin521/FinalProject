@@ -1,11 +1,24 @@
 
+
+<div class="show-post col-xs-12 col-xs-offset-3">
+
 <h1>this is the show page </h1>
-<p class = "date">
-submitted <%= @post.created_at.strftime '%A %B %e, %Y' %>ago
-</p>
 
-<p class = "body">
-  <%= @post.description %>
-</p>
+<table style="width:50%">
 
-<p>location: <%= @story.location %></p>
+  <tr>
+    <th>submitted</th>
+    <th>message</th>
+    <th>location</th>
+  </tr>
+
+  <tr>
+    <td><%= @post.created_at.strftime '%A %B %e, %Y' %></td>
+    <td><%= @post.description %></td>
+    <td><%= @post.location %></td>
+  </tr>
+
+  </table>
+
+
+  <p><%= link_to "go back to my page", user_path %></p>

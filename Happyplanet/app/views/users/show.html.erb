@@ -1,8 +1,13 @@
 
-
+<div class=" user-show col-xs-6 col-xs-offset-3">
 
 <h2>you are logged in as: <%= @user.name %></h2>
 <p><%= link_to "edit your profile", edit_user_path %></p>
+
+
+
+
+<%= render 'newpostform' %>
 
 
 <div class = "user-show">
@@ -10,10 +15,12 @@
 
 <table style="width:100%" class="table-striped">
 
-<% @user.posts.each do |story| %>
+<% @user.posts.each do |post| %>
 <tr>
   <td><%= link_to post.created_at, post_path(post.id) %></td>
-  <td><%= link_to 'Edit', edit_post_path(@user) %> <%= link_to 'Delete', @post, :method => :delete, :data => { :confirm => "Are you sure?" } %></td>
+  <td><%= link_to 'Edit', edit_post_path(@user) %>
+      <%= link_to 'Delete', @post, :method => :delete, :data => { :confirm => "Are you sure?" } %>
+  </td>
   <% end %>
   </table>
 
@@ -21,4 +28,6 @@
 
 </br>
 
-<p><%= link_to "add more messages...", new_post_path %></p>
+<p><%= link_to "add more messages", new_post_path %></p>
+
+</div>

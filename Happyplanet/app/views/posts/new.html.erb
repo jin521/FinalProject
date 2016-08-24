@@ -1,7 +1,9 @@
+
+
+<div class=" new-post col-xs-4 col-xs-offset-4">
+
 <h1>create new posts</h1>
 
-<%= form_for :post, url: posts_path do |f| %>
-<%= f.label :message %></br>
-<%= f.text_area :description ,  :required => true, placeholder: "What makes you happy today?", size: "60x12"%></br>
-<%= f.submit "Create" %>
-<% end  %>
+<%= render 'newpostform'  %>
+
+<div>
