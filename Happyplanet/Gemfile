@@ -39,6 +39,7 @@ group :development, :test do
   gem 'twitter'
   gem 'bootstrap-sass'
   gem 'pry-rails'
+  gem 'geocoder'
 end
 
 group :development do

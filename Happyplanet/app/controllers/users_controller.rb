@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 
-  before_action :authorise_user, :except => [:index]
+  before_action :authorise_user, :except => [:index, :new, :create]
   before_action :check_for_user, :only => [:edit, :update]
 
   def new

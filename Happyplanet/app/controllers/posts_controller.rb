@@ -11,9 +11,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.save
-    redirect_to @post
+    post = Post.new(post_params)
+    ip_address = request.ip
+    post.location = Geocoder.search(ip_address).first.city
+    post.user_id = @current_user.id
+    post.save
+    redirect_to post
 
   end
 
