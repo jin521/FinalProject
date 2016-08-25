@@ -2,22 +2,21 @@
 $(document).ready(function () {
 
 
-        $('#enterbutton').click(function() {
-
-
-        $.ajax({
-            type: "POST",
-            url: '/posts/new',
-            data: $("#enterpost").val(),
-            success: success
-          }.done{
 
 
 
-          }
+  // return false;
 
-        })
-    });
+    //
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/submitform",
+    //   data: message
+    //   success: function(result) {
+    //
+    //     $('.postforms').append(message;
+    //   },
+    // });
 
 
-  });
+});

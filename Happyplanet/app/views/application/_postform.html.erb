@@ -1,9 +1,12 @@
 
 
 
+<div class="postforms">
 <%= form_for :post, url: posts_path do |f| %>
 <%= f.label :message %></br>
 <%= f.text_area :description ,  :required => true, placeholder: "What makes you happy today?", size: "60x6"%></br>
 <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<%= f.submit "Create" %>
+<%= f.submit button_text, :class => 'submit'  %>
 <% end  %>
+
+</div>

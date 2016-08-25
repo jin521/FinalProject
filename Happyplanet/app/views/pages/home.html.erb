@@ -1,16 +1,21 @@
+<!--
+  <div id="entersite">
 
- <!-- <div id = "enterpost">
+  <p>Spread the world with happiness and positivitiness. Connect with others through this space of imagination. Look at other people’s happy messages around the world by clicking on the floating particles. Be part of the growing community by adding messages to generate anohter happy particle, ..... We are in this world together.
 
-   <%= form_for :post, url: posts_path do |f| %>
-   <%= f.text_area :description ,  :required => true, placeholder: "What makes you happy today?"%></br>
-   <%= f.submit "Enter", :id =>"enterbutton" %>
-   <% end  %>
- </div> -->
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, ipsam fugit? Deserunt dolorem minus laboriosam a consequatur, nisi necessitatibus quisquam, ipsum hic vero dignissimos quasi architecto. Accusamus praesentium saepe, asperiores.</p>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, nemo, qui, quae fuga perspiciatis nihil in obcaecati, a molestias corrupti illum quia! Beatae exercitationem obcaecati, porro voluptatem illum, cumque consectetur!</p>
+
+  <button>Enter Site </button>
+
+  </div> -->
+
 
 <div class = "box" >
   <%= form_for :post, url: posts_path, :id =>"enterpost" do |f| %>
-  <%= f.text_area :description ,  :required => true, placeholder: "What makes you happy today?"%></br>
-  <%= f.submit "Enter", :id =>"enterbutton" %>
+  <%= f.text_area :description , :id => "post_text",  :required => true, placeholder: "What makes you happy today?"%></br>
+  <%= f.button "Enter", :id =>"enterbutton", type: "button" %>
   <% end  %>
 </div>
 

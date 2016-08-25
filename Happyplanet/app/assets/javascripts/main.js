@@ -1,3 +1,6 @@
+
+var gapp;
+
 var createUniverse = function() {
 
 
@@ -122,7 +125,7 @@ var createUniverse = function() {
 
         app.scene.add(app.sphere);
 
-console.log(app.sphere, sphereMaterial);
+        console.log(app.sphere, sphereMaterial);
 
 
         // create the geometry sphere for background
@@ -243,24 +246,51 @@ console.log(app.sphere, sphereMaterial);
 
 
 
+
+
+  //Find specific point between 2 points
+  // http://stackoverflow.com/questions/27426053/find-specific-point-between-2-points-three-js
+  app.getPointInBetweenByPerc = function(pointA, pointB, percentage) {
+      var dir = pointB.clone().sub(pointA);
+      var len = dir.length();
+      dir = dir.normalize().multiplyScalar(len*percentage);
+      return pointA.clone().add(dir);
+
+  }
+
+
     app.randRange = function(min, max) {
         var range = max - min;
         return min + (Math.random() * range);
     };
 
+
+
     app.createParticle = function() {
+
 
         console.log('createParticle', app.visibleParticles, app.particleSystem.geometry.vertices[app.visibleParticles])
         var particle = app.particleSystem.geometry.vertices[app.visibleParticles];
         particle.hidden = false;
-        console.log(app.camera.position);
-        particle.set(app.camera.position.x, app.camera.position.y, app.camera.position.z);
+        console.log(app.camera.position, particle);
+
+        //make velocity to  be 0 when the particle is generated
+        particle.vx = particle.vy = particle.vz = 0;
+        //creating a pposition betwwen Point A ( camera) and PointB ( origin),distance percentage 1% from camera position
+        particle.copy( app.getPointInBetweenByPerc(app.camera.position, new THREE.Vector3(0,0,0), 0.1) );
+
+
         console.log(particle);
         app.visibleParticles++;
 
     };
 
+
+
+
     app.createParticleSystem = function() {
+
+      console.log(app.camera);
 
         var particles = new THREE.Geometry(); // a basic collection of vertices (i.e. points)
 
@@ -349,6 +379,9 @@ console.log(app.sphere, sphereMaterial);
         // }
 
         return particleSystem;
+
+
+
     };
 
 
@@ -421,7 +454,7 @@ console.log(app.sphere, sphereMaterial);
         app.init();
     });
 
-    $(document).mousedown(function(e) {
+    $("#output").mousedown(function(e) {
         console.log('mousedown');
         e.preventDefault();
         // calculate mouse position in normalized device coordinates
@@ -436,7 +469,7 @@ console.log(app.sphere, sphereMaterial);
         // calculate objects intersecting the picking ray
         var intersects = raycaster.intersectObjects(app.scene.children);
 
-        if (intersects.length > 0) {
+        if (intersects.lemmength > 0) {
 
             //      //console.log( 'intersects', intersects );
             //      // Points.js::raycast() doesn't seem to sort this correctly atm,
@@ -467,16 +500,10 @@ console.log(app.sphere, sphereMaterial);
             var divXY = toScreenXY(vertex, app.camera, app.renderer.domElement);
             //$el is now a global varible( not having var in front)
             $el = $('<div id="stuff" class="message">').css({
-                    width: '200px',
-                    minHeight: '100px',
-                    position: 'absolute',
+
                     top: divXY.y + "px",
                     left: divXY.x + "px",
-                    color: '#CCCCCC',
-                    padding: '4px',
-                    fontSize: '10pt',
-                    backgroundColor: "rgba(1,1,1,0.5)",
-                    border: "2px solid gray"
+
                 })
                 .html(app.particleSystem.geometry.vertices[particle.index].textcontent)
                 .appendTo($('body'));
@@ -519,6 +546,34 @@ console.log(app.sphere, sphereMaterial);
         return pos;
     }
 
-};
+
+    $("#enterbutton").on("click", function(event) {
+
+      // event.preventDefault();
+
+      var message = $('#post_text').val();
+
+      $.ajax({
+        url: '/posts',
+        method: 'POST',
+        dataType: 'json',
+        data: { post: { description: message } }
+      })
+      .done(function(d){
+        console.log('success', d);
+        app.createParticle();
+
+      })
+      .fail(function(d){
+        console.log('fail', d);
+      });
+
+    });
+
+
+gapp = app;
+
+
+}; //end of createUniverse
 
 $(document).ready(createUniverse);

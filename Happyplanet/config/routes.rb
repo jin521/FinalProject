@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
 
   get '/getposts' => 'posts#get_posts'     #routing for Ajax only
+
+
+
 end

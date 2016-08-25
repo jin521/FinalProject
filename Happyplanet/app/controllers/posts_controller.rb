@@ -16,7 +16,13 @@ class PostsController < ApplicationController
     post.location = Geocoder.search(ip_address).first.city
     post.user_id = @current_user.id
     post.save
-    redirect_to user_path @current_user
+    # binding.pry
+    # redirect_to user_path @current_user
+
+    respond_to do |format|
+      format.html { redirect_to user_path @current_user }
+      format.js   { render json: {hi: "ok"}, status: :ok }
+    end
 
   end
 
@@ -46,7 +52,7 @@ class PostsController < ApplicationController
 
 
   def get_posts
-    all_posts = Post.where.not(:description => "")
+    all_posts = Post.where.not(:description => "").limit(2)
     render json: {posts: all_posts}, :status => :ok
   end
 
