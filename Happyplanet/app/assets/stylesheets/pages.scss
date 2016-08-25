@@ -14,7 +14,7 @@
     font-family: Helvetica;
     letter-spacing: 1px;
     font-size: 11pt;
-    color: #ffffff;
+    color: #FFFAF0;
     padding: 20px;
     background-color: rgba(200, 200, 200, 0.2);
     width: 40%;
@@ -22,13 +22,23 @@
 
   }
 
+
+  #pressme{
+
+    position:absolute;
+    right:45%;
+    top:80%;
+    font-size: 20px;
+  }
+
   #pulse-button{
       position: absolute;
-      top: 300px;
-      left: 0;
-      border-radius: 30px;
-      background-color: #DB7093;
+      bottom: 50px;
+      left: 10%;
+      border-radius: 40px;
+      background-color: #5F2B59;
       border: none;
+      outline: none;
       color: white;
       padding: 10px 20px;
       text-align: center;
@@ -36,13 +46,17 @@
       display: inline-block;
       font-size: 15px;
       margin: 4px 2px;
-      opacity: 0.4;
+      opacity: 0.8;
       cursor: pointer;
       -webkit-transition-duration: 0.4s; /* Safari */
       transition-duration: 0.4s;
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
   }
+
+    #pulse-button:hover {
+        opacity: 0.3;
+    }
 
 
 .navbar{
@@ -60,16 +74,20 @@
       color:white;
       outline: none;
 
+
 }
 
 
 
-#enter-button {
+#enterbutton {
       color: #FFF;
-      font-size: 24px;
+      font-size: 15px;
       display: block;
-      padding: 12px;
+      padding: 5px;
       text-align: center;
+      border-radius: 10px;
+      background-color: black;
+      border: none;
   }
 
 
@@ -80,7 +98,7 @@
       width: 400px;
       padding: 20px;
       background: rgba(0,0,0,1.2);
-      //opacity: 0.2;
+      opacity: 0.2;
       position: absolute;
       top: 600px;
       left: 35%;

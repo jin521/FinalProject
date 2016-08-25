@@ -506,6 +506,7 @@ var createUniverse = function() {
       .done(function(d){
         console.log('success', d);
         app.createParticle();
+        $('#post_text').val('');
 
       })
       .fail(function(d){
