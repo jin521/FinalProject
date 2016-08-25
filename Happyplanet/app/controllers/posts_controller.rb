@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
 
   def get_posts
-    all_posts = Post.where.not(:description => "")
+    all_posts = Post.where.not(:description => "").limit(100)
     render json: {posts: all_posts}, :status => :ok
   end
 

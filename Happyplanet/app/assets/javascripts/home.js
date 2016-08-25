@@ -3,20 +3,18 @@ $(document).ready(function () {
 
 
 
+      $( "#pressme" ).on('click', function() {
+      setTimeout(function() {
+         $('#entersite').fadeOut();
+       }, 1000)
+
+      });
 
 
-  // return false;
+$('#pulse-button').on('click', function() {
 
-    //
-    // $.ajax({
-    //   type: "POST",
-    //   url: "/submitform",
-    //   data: message
-    //   success: function(result) {
-    //
-    //     $('.postforms').append(message;
-    //   },
-    // });
+    $('.box').slideDown(800);
 
+  });
 
 });

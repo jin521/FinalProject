@@ -3,10 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
 #entersite{
     // display: none; /* turn on to activate  */
     position: absolute;
-    top: 100px;
+    top: 300px;
     left: 0;
     right: 0;
     font-family: Helvetica;
@@ -15,49 +17,74 @@
     color: #ffffff;
     padding: 20px;
     background-color: rgba(200, 200, 200, 0.2);
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
+
+  }
+
+  #pulse-button{
+      position: absolute;
+      top: 300px;
+      left: 0;
+      border-radius: 30px;
+      background-color: #DB7093;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      margin: 4px 2px;
+      opacity: 0.4;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
   }
 
 
-
 .navbar{
-    margin-bottom: 0px;
-    background-color: #0C1638
+      margin-bottom: 0px;
+      background-color: #0C1638
 }
 
 #post_text{
 
-  height:127px;
-  width:364px;
-  background-color: black;
-  border: none;
-  border-style: none;
-  color:white;
-  outline: none;
+      height:127px;
+      width:364px;
+      background-color: black;
+      border: none;
+      border-style: none;
+      color:white;
+      outline: none;
 
 }
 
 
 
 #enter-button {
-    color: #FFF;
-    font-size: 24px;
-    display: block;
-    padding: 12px;
-    text-align: center;
-}
+      color: #FFF;
+      font-size: 24px;
+      display: block;
+      padding: 12px;
+      text-align: center;
+  }
 
 
 .box{
+
+      display: none; /* turn on to activate  */
       height: 200px;
       width: 400px;
       padding: 20px;
       background: rgba(0,0,0,1.2);
       //opacity: 0.2;
       position: absolute;
-      top: 400px;
-      left: 200;
+      top: 600px;
+      left: 35%;
+      margin: 0 auto;
       border: 3px solid #6E8993;
       font-size: 20px;
 
@@ -72,19 +99,17 @@
 }
 
 .box:hover {
-  opacity: 0.4;
+      opacity: 0.4;
 }
 
-
-
-
   .message{
-    width: 200px;
-    min-height: 100px;
-    position: absolute;
-    color: #CCCCCC;
-    padding: 4px;
-    font-size: 10pt;
-    background-color: rgba(1,1,1,0.5);
-    border: 2px solid gray
+        width: 200px;
+        min-height: 80px;
+        position: absolute;
+        color: #CCCCCC;
+        padding: 4px;
+        font-size: 10pt;
+        background-color: rgba(1,1,1,0.5);
+        border: 2px solid gray;
+        border-radius: 20px;
   }
