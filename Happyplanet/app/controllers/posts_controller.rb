@@ -42,7 +42,6 @@ class PostsController < ApplicationController
   end
 
 
-
   def destroy
     @post.destroy
     redirect_to post_path
@@ -55,9 +54,7 @@ class PostsController < ApplicationController
     render json: {posts: all_posts}, :status => :ok
   end
 
-  # def post_new
-  #    posts = Post.where()
-  # end
+
 
 
 
