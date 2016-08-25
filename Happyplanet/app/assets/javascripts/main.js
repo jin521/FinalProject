@@ -276,8 +276,9 @@ var createUniverse = function() {
 
         //make velocity to  be 0 when the particle is generated
         particle.vx = particle.vy = particle.vz = 0;
+        // particle.setRGB(0, 0, 255)
         //creating a pposition betwwen Point A ( camera) and PointB ( origin),distance percentage 1% from camera position
-        particle.copy( app.getPointInBetweenByPerc(app.camera.position, new THREE.Vector3(0,0,0), 0.1) );
+        particle.copy( app.getPointInBetweenByPerc(app.camera.position, new THREE.Vector3(0,0,0), 0.2) );
 
 
         console.log(particle);
@@ -512,10 +513,10 @@ var createUniverse = function() {
         }
 
     }).on('mouseup', function () {
-      var $element = $el; //making a copy of $el
-      setTimeout(function() {
-          $element.remove();
-      }, 800);
+            var $element = $el; //making a copy of $el
+            setTimeout(function() {
+                $element.remove();
+            }, 800);
     });
 
     //  converting 3d position to 2d screen position, from http://stackoverflow.com/questions/11534000/three-js-converting-3d-position-to-2d-screen-position

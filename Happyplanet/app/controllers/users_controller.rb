@@ -28,13 +28,14 @@ class UsersController < ApplicationController
     @user = @current_user
   end
 
+
+
   def show
       @user = @current_user
-
   end
 
 
-  def update
+  def updates
       @user = @current_user
 
     if @user.update user_params
@@ -43,6 +44,16 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+
+
+    def destroy
+      @post.destroy
+      redirect_to post_path
+    end
+
+
+
 
 
   private
@@ -57,6 +68,4 @@ class UsersController < ApplicationController
       def check_for_user
         redirect_to new_user_path unless @current_user.present?
       end
-
-
 end

@@ -28,6 +28,14 @@
 
 #post_text{
 
+  height:127px;
+  width:364px;
+  background-color: black;
+  border: none;
+  border-style: none;
+  color:white;
+  outline: none;
+
 }
 
 
@@ -63,11 +71,11 @@
       border-radius: 7px;
 }
 
+.box:hover {
+  opacity: 0.4;
+}
 
 
-  .box:hover {
-    opacity: 0.4;
-  }
 
 
   .message{

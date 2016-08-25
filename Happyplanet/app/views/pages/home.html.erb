@@ -15,7 +15,7 @@
 <div class = "box" >
   <%= form_for :post, url: posts_path, :id =>"enterpost" do |f| %>
   <%= f.text_area :description , :id => "post_text",  :required => true, placeholder: "What makes you happy today?"%></br>
-  <%= f.button "Enter", :id =>"enterbutton", type: "button" %>
+  <%= f.button "Send", :id =>"enterbutton", type: "button" %>
   <% end  %>
 </div>
 
