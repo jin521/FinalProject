@@ -5,8 +5,6 @@
 <p><%= link_to "Edit my profile", edit_user_path %></p>
 
 
-
-
 <%= render partial: 'postform',locals: {button_text: "Create New"} %>
 
 </br>
@@ -18,7 +16,7 @@
 
 <table style="width:50%" class="table-striped">
 
-<% @user.posts.each do |post| %>
+<% @user.posts.order("created_at DESC").each do |post| %>
 <tr>
 
   <td><%= link_to post.created_at , post_path(post.id) %></td>

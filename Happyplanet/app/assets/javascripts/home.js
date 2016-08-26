@@ -6,7 +6,7 @@ $(document).ready(function () {
       $( "#pressme" ).on('click', function() {
       setTimeout(function() {
          $('#entersite').fadeOut();
-       }, 1500)
+       }, 1800)
 
       });
 

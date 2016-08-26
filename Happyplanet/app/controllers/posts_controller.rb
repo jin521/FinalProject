@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_path @current_user }
-      format.js   { render json: {hi: "ok"}, status: :ok }
+      format.js   { render json: { hi: "ok" }, status: :ok }
     end
 
   end

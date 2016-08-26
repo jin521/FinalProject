@@ -406,15 +406,7 @@ var createUniverse = function() {
             //      });  // sort into an array with the nearest point at the start
 
             var particle = intersects[0];//closed to ray
-            //  debugger;
 
-            $(document).on("mouseover", function(event) {
-                console.log('mouseover');
-                // debugger;
-                // app.particleSystem.geometry.colors[app.particle].setRGB(0, 0, 1.0);
-                // app.particleSystem.geometry.colorsNeedUpdate = true;
-
-            });
 
 
             console.log(particle.index, particle);
@@ -455,12 +447,51 @@ var createUniverse = function() {
 
     })
 
-    // .on('mouseup', function () {
-    //         var $element = $el; //making a copy of $el
-    //         setTimeout(function() {
-    //             $element.remove();
-    //         }, 800);
-    // });
+        // .on('mouseup', function () {
+        //         var $element = $el; //making a copy of $el
+        //         setTimeout(function() {
+        //             $element.remove();
+        //         }, 800);
+        // });
+
+
+      ////////////////////////when mouse over the particle closest to ray will change color /highlighted
+
+                $("output").on("mouseover", function(event) {
+                    console.log('mouseover');
+
+                    // calculate mouse position in normalized device coordinates
+                    // (-1 to +1) for both components
+                    mouse.x = (e.clientX / app.renderer.domElement.width) * 2 - 1;
+                    mouse.y = -(e.clientY / app.renderer.domElement.height) * 2 + 1;
+                    mouse.z = 0.5;
+
+
+                    // update the picking ray with the camera and mouse position
+                    raycaster.setFromCamera(mouse, app.camera);
+                    // calculate objects intersecting the picking ray
+                    var intersects = raycaster.intersectObjects(app.scene.children);
+
+                    if (intersects.length > 0) {
+
+                        var particle = intersects[0];//closed to ray
+                        console.log('this is the closest particle to ray',
+
+                            particle.index, particle,
+                            app.particleSystem.geometry.vertices[particle.index].textcontent
+                        );
+
+                        //  debugger;
+
+                        app.particleSystem.geometry.colors[particle.index].setRGB(0,0,1.0);
+                        app.particleSystem.geometry.colorsNeedUpdate = true;
+                    }
+
+                });
+
+
+
+
 
     //converting 3d position to 2d screen position, from http://stackoverflow.com/questions/11534000/three-js-converting-3d-position-to-2d-screen-position
     function toScreenXY(position, camera, div) {
