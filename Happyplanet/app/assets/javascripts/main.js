@@ -189,7 +189,7 @@ var createUniverse = function() {
 
 
         // it is actually unhiding parcticles
-    app.createParticle = function() {
+    app.createParticle = function(text) {
 
 
         console.log('createParticle', app.visibleParticles, app.particleSystem.geometry.vertices[app.visibleParticles])
@@ -199,6 +199,8 @@ var createUniverse = function() {
 
         //make velocity to  be 0 when the particle is generated
         particle.vx = particle.vy = particle.vz = 0;
+
+       app.particleSystem.geometry.vertices[app.visibleParticles].textcontent = text;
 
         app.particleSystem.geometry.colors[app.visibleParticles].setRGB(0, 0, 1.0);
         app.particleSystem.geometry.colorsNeedUpdate = true;
@@ -478,11 +480,11 @@ var createUniverse = function() {
                     if (intersects.length > 0) {
 
                         var particle = intersects[0];//closed to ray
-                        console.log('this is the closest particle to ray',
-
-                            particle.index, particle,
-                            app.particleSystem.geometry.vertices[particle.index].textcontent
-                        );
+                        // console.log('this is the closest particle to ray',
+                        //
+                        //     particle.index, particle
+                        //     //app.particleSystem.geometry.vertices[particle.index].textcontent
+                        // );
 
                         //  debugger;
 
@@ -544,7 +546,7 @@ var createUniverse = function() {
       })
       .done(function(d){
         console.log('success', d);
-        app.createParticle();
+        app.createParticle( $('#post_text').val() );
         $('#post_text').val('');
 
       })
