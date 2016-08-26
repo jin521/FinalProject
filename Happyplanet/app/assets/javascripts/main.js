@@ -15,6 +15,8 @@ var createUniverse = function() {
 
     var $el;
 
+    app.selectedParticle = 0;
+
     app.visibleParticles = 0; // will be set to length of posts (in AJAX handler)
     app.hiddenParticles = 100;
     app.totalParticles = 0;
@@ -113,6 +115,7 @@ var createUniverse = function() {
 
         //Ajax to fetch data from Database
         $.ajax('/getposts').done(function(response) {
+
 
             // we have to wait for our ajax response before we can do the rest of the three.js code below:
 
@@ -457,8 +460,8 @@ var createUniverse = function() {
 
       ////////////////////////when mouse over the particle closest to ray will change color /highlighted
 
-                $("output").on("mouseover", function(event) {
-                    console.log('mouseover');
+                $("#output").on("mousemove", function(e) {
+                    console.log('mousemove');
 
                     // calculate mouse position in normalized device coordinates
                     // (-1 to +1) for both components
@@ -483,8 +486,13 @@ var createUniverse = function() {
 
                         //  debugger;
 
+                        // reset colour of last selected particle
+                        app.particleSystem.geometry.colors[ app.selectedParticle ].setRGB(1.0, 1.0, 1.0);
+
                         app.particleSystem.geometry.colors[particle.index].setRGB(0,0,1.0);
                         app.particleSystem.geometry.colorsNeedUpdate = true;
+
+                        app.selectedParticle = particle.index;
                     }
 
                 });

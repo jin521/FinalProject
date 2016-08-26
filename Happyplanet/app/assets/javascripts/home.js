@@ -3,11 +3,8 @@ $(document).ready(function () {
 
 
 
-      $( "#pressme" ).on('click', function() {
-      setTimeout(function() {
-         $('#entersite').fadeOut();
-       }, 1800)
-
+      $( "#entersite" ).on('click', function() {
+         $('#entersite').fadeOut(2000);
       });
 
 
