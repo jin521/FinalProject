@@ -491,7 +491,7 @@ var createUniverse = function() {
                         // reset colour of last selected particle
                         app.particleSystem.geometry.colors[ app.selectedParticle ].setRGB(1.0, 1.0, 1.0);
 
-                        app.particleSystem.geometry.colors[particle.index].setRGB(0,0,1.0);
+                        app.particleSystem.geometry.colors[particle.index].setRGB(0,1.0,0.5);
                         app.particleSystem.geometry.colorsNeedUpdate = true;
 
                         app.selectedParticle = particle.index;

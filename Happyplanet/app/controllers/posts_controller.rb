@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+
   def index
 
       @posts = Post.where(params[:user_id] = @current_user.id)
@@ -11,6 +12,9 @@ class PostsController < ApplicationController
   end
 
   def create
+
+    redirect_to login_path unless @current_user.present?
+
     post = Post.new(post_params)
     ip_address = request.ip
     post.location = Geocoder.search(ip_address).first.city

@@ -8,10 +8,9 @@ $(document).ready(function () {
       });
 
 
-$('#pulse-button').on('click', function() {
+      $('#pulse-button').on('click', function() {
 
-    $('.box').slideDown(800);
-
-  });
+        $('.box').slideDown(800);
+      });
 
 });

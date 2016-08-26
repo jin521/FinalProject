@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
     end
 
 
+    # def authorize_post
+    #   redirect_to login_path unless @current_user.present?
+    # end
+
+
 
 
 
