@@ -4,8 +4,7 @@
 
 
 
-
-#entersite{
+#entersite {
     // display: none; /* turn on to activate  */
     position: absolute;
     top: 300px;
@@ -22,116 +21,97 @@
     margin: 0 auto;
     cursor: pointer;
     border-radius: 20px;
+}
 
-
-  }
-
-
-  #pressme{
-
-    position:absolute;
-    right:45%;
-    top:80%;
+#pressme {
+    position: absolute;
+    right: 45%;
+    top: 80%;
     font-size: 20px;
-  }
-
-  #pulse-button{
-      position: absolute;
-      bottom: 50px;
-      left: 10%;
-      border-radius: 40px;
-      background-color: #5F2B59;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 15px;
-      margin: 4px 2px;
-      opacity: 0.8;
-      cursor: pointer;
-      -webkit-transition-duration: 0.4s; /* Safari */
-      transition-duration: 0.4s;
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-
-  }
-
-    #pulse-button:hover {
-        opacity: 0.3;
-    }
-
-
-.navbar{
-      margin-bottom: 0px;
-      background-color: #0C1638
-}
-
-#post_text{
-
-      height:127px;
-      width:364px;
-      background-color: black;
-      border: none;
-      border-style: none;
-      color:white;
-      outline: none;
-
 
 }
 
-
-
+#pulse-button {
+    position: absolute;
+    bottom: 50px;
+    left: 10%;
+    border-radius: 40px;
+    background-color: #5F2B59;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#pulse-button:hover {
+    opacity: 0.3;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #0C1638;
+}
+#post_text {
+    height: 127px;
+    width: 364px;
+    background-color: black;
+    border: none;
+    border-style: none;
+    color: white;
+    outline: none;
+}
 #enterbutton {
-      color: #FFF;
-      font-size: 15px;
-      display: block;
-      padding: 5px;
-      text-align: center;
-      border-radius: 10px;
-      background-color: black;
-      border: none;
-  }
-
-
-.box{
-
-      display: none; /* turn on to activate  */
-      height: 200px;
-      width: 400px;
-      padding: 20px;
-      background: rgba(0,0,0,1.2);
-      opacity: 0.2;
-      position: absolute;
-      top: 600px;
-      left: 35%;
-      margin: 0 auto;
-      border: 3px solid #6E8993;
-      font-size: 20px;
-
-      /* outer shadows  (note the rgba is red, green, blue, alpha) */
-      -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
-      -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
-
-      /* rounded corners */
-      -webkit-border-radius: 12px;
-      -moz-border-radius: 7px;
-      border-radius: 7px;
+    color: #FFF;
+    font-size: 15px;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: black;
+    border: none;
 }
-
+.box {
+    display: none;
+    /* turn on to activate  */
+    height: 200px;
+    width: 400px;
+    padding: 20px;
+    background: rgba(0,0,0,1.2);
+    opacity: 0.2;
+    position: absolute;
+    top: 600px;
+    left: 35%;
+    margin: 0 auto;
+    border: 3px solid #6E8993;
+    font-size: 20px;
+    /* outer shadows  (note the rgba is red, green, blue, alpha) */
+    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 6px rgba(23, 69, 88, .5);
+    /* rounded corners */
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
 .box:hover {
-      opacity: 0.4;
+    opacity: 0.4;
 }
-
-  .message{
-        width: 200px;
-        min-height: 80px;
-        position: absolute;
-        color: #CCCCCC;
-        padding: 4px;
-        font-size: 10pt;
-        background-color: rgba(1,1,1,0.8);
-        border: 2px solid gray;
-        border-radius: 20px;
-  }
+.message {
+    width: 200px;
+    min-height: 80px;
+    position: absolute;
+    color: #CCCCCC;
+    padding: 4px;
+    font-size: 10pt;
+    background-color: rgba(1,1,1,0.8);
+    border: 2px solid gray;
+    border-radius: 20px;
+}

@@ -200,7 +200,7 @@ var createUniverse = function() {
         //make velocity to  be 0 when the particle is generated
         particle.vx = particle.vy = particle.vz = 0;
 
-       app.particleSystem.geometry.vertices[app.visibleParticles].textcontent = text;
+        app.particleSystem.geometry.vertices[app.visibleParticles].textcontent = text;
 
         app.particleSystem.geometry.colors[app.visibleParticles].setRGB(0, 0, 1.0);
         app.particleSystem.geometry.colorsNeedUpdate = true;
